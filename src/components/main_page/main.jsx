@@ -21,6 +21,11 @@ const MainPage = () => {
     }
   };
 
+  const deleteSelectedHero = (img) => {
+    let arr = selectedHeroes.filter(e => e.img !== img)
+    setSelectedHeroes(arr)
+  }
+
   useEffect(() => {
     if (query === "") {
       heroCharacters().then((res) => {
@@ -57,7 +62,7 @@ const MainPage = () => {
             </div>
             {selectedHeroes.map((hero) => {
               
-              return <MyTeam img={hero.img} name={hero.name} />;
+              return <MyTeam img={hero.img} name={hero.name} deleted={deleteSelectedHero}/>;
             })}
           </div>
         </div>
