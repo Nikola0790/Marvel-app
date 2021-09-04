@@ -10,9 +10,15 @@ const MainPage = () => {
   const [selectedHeroes, setSelectedHeroes] = useState([]);
   const [query, setQuery] = useState("");
 
-  const addSelectedHero = (name, img) => {
-    const newSelectedHero = { name, img };
-    setSelectedHeroes([...selectedHeroes, newSelectedHero]);
+  const addSelectedHero = (name, img, heroId) => {      
+    const newSelectedHero = { name, img, heroId };
+    
+    let exist = selectedHeroes.filter(e=>e.heroId === heroId)
+    if(exist && exist.length>0){
+      alert('You have already added a selected hero')
+    }else{
+      setSelectedHeroes([...selectedHeroes, newSelectedHero])
+    }
   };
 
   useEffect(() => {
@@ -50,6 +56,7 @@ const MainPage = () => {
               </div>
             </div>
             {selectedHeroes.map((hero) => {
+              
               return <MyTeam img={hero.img} name={hero.name} />;
             })}
           </div>

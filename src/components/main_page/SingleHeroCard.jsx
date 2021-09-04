@@ -21,7 +21,7 @@ const SingleHeroCard = ({ hero, onSelect }) => {
             href="#"
             className="card-link"
             onClick={() => {
-              onSelect(hero.name, hero.thumbnail.path + "/portrait_small.jpg");
+              onSelect(hero.name, hero.thumbnail.path + "/portrait_small.jpg", hero.id);
             }}
           >
             Add
