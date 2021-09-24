@@ -10,21 +10,21 @@ const MainPage = () => {
   const [selectedHeroes, setSelectedHeroes] = useState([]);
   const [query, setQuery] = useState("");
 
-  const addSelectedHero = (name, img, heroId) => {      
+  const addSelectedHero = (name, img, heroId) => {
     const newSelectedHero = { name, img, heroId };
-    
-    let exist = selectedHeroes.filter(e=>e.heroId === heroId)
-    if(exist && exist.length>0){
-      alert('You have already added a selected hero')
-    }else{
-      setSelectedHeroes([...selectedHeroes, newSelectedHero])
+
+    let exist = selectedHeroes.filter((e) => e.heroId === heroId);
+    if (exist && exist.length > 0) {
+      alert("You have already added a selected hero");
+    } else {
+      setSelectedHeroes([...selectedHeroes, newSelectedHero]);
     }
   };
 
   const deleteSelectedHero = (img) => {
-    let arr = selectedHeroes.filter(e => e.img !== img)
-    setSelectedHeroes(arr)
-  }
+    let arr = selectedHeroes.filter((e) => e.img !== img);
+    setSelectedHeroes(arr);
+  };
 
   useEffect(() => {
     if (query === "") {
@@ -60,9 +60,15 @@ const MainPage = () => {
                 <h3>MY TEAM</h3>
               </div>
             </div>
-            {selectedHeroes.map((hero) => {
-              
-              return <MyTeam img={hero.img} name={hero.name} deleted={deleteSelectedHero}/>;
+            {selectedHeroes.map((hero, index) => {
+              return (
+                <MyTeam
+                  key={index}
+                  img={hero.img}
+                  name={hero.name}
+                  deleted={deleteSelectedHero}
+                />
+              );
             })}
           </div>
         </div>

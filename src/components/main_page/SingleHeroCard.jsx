@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SingleHeroCard = ({ hero, onSelect }) => {
   //console.log(hero);
@@ -14,14 +15,18 @@ const SingleHeroCard = ({ hero, onSelect }) => {
           alt="..."
         />
         <div className="card-body">
-          <a href="#" className="card-link">
+          <Link to={`/infoPage/${hero.id}`} className="card-link">
             Info
-          </a>
+          </Link>
           <a
             href="#"
             className="card-link"
             onClick={() => {
-              onSelect(hero.name, hero.thumbnail.path + "/portrait_small.jpg", hero.id);
+              onSelect(
+                hero.name,
+                hero.thumbnail.path + "/portrait_small.jpg",
+                hero.id
+              );
             }}
           >
             Add
