@@ -1,26 +1,27 @@
-
-import React, { useState, useEffect, Fragment } from "react";
-import Header from "./components/header/header";
+import React, { Fragment } from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import MainPage from "./components/main_page/main";
+import InfoPage from "./components/info_page/infoPage";
+import Header from "./components/header/header";
+
 function App() {
-  /* const [items, setItems] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    action().then((res) => {
-      console.log(res);
-      setItems(res.data.results);
-      setLoading(false);
-      return res;
-    });
-  }, []);
-  console.log(items);
-  const array = items.map((hero, index) => {
-    return hero;
-  }); */
   return (
     <Fragment>
-      <Header />
-      <MainPage />
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/main" component={MainPage} />
+          <Route exact path="/infoPage/:id" component={InfoPage} />
+          <Route exact path="/">
+            <Redirect to="/main" />
+          </Route>
+        </Switch>
+      </Router>
     </Fragment>
   );
 }
