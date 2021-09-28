@@ -1,0 +1,20 @@
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.answer {
+  color: black;
+}
+.question {
+  font-size: 22px;
+  font-weight: normal;
+  color: #929292 !important;
+}
+.note {
+  font-weight: normal;
+  color: black !important;
+}
+.poster {
+  width: 100%;
+}

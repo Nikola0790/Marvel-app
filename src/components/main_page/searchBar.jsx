@@ -16,7 +16,6 @@ const SearchBar = ({ search }) => {
         onChange={(e) => onSearch(e.target.value)}
         value={text}
       />
-      <button>Go</button>
     </div>
   );
 };

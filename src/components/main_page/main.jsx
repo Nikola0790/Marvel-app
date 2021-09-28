@@ -21,8 +21,8 @@ const MainPage = () => {
     }
   };
 
-  const deleteSelectedHero = (img) => {
-    let arr = selectedHeroes.filter((e) => e.img !== img);
+  const deleteSelectedHero = (url) => {
+    let arr = selectedHeroes.filter((e) => e.img !== url);
     setSelectedHeroes(arr);
   };
 
