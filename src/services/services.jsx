@@ -42,3 +42,11 @@ export async function heroInfo(idNum) {
   let data = await result.json();
   return data.data.results[0].thumbnail.path;
 }
+
+export async function heroComics(idNum) {
+  let link = `http://gateway.marvel.com/v1/public/characters/${idNum}/comics?ts=1&apikey=e680e5543fe28cd5b55866a7012dd7d9&hash=${hash}`;
+  let result = await fetch(link);
+  let data = await result.json();
+  let resData = await data.data.results;
+  return resData;
+}
