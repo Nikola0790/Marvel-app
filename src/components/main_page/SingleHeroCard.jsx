@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../css/singleHeroCard.css";
 
 const SingleHeroCard = ({ hero, onSelect }) => {
   //console.log(hero);
   return (
-    <div className="col-md-4">
+    <div className="col-lg-4 col-md-6 mb-2">
       <div className="card ">
         <div className="card-body">
           <h5 className="card-title">{hero.name}</h5>
@@ -14,13 +15,13 @@ const SingleHeroCard = ({ hero, onSelect }) => {
           className="card-img-top"
           alt="..."
         />
-        <div className="card-body">
-          <Link to={`/infoPage/${hero.id}`} className="card-link">
+        <div className="card-body centerBtt">
+          <Link to={`/infoPage/${hero.id}`} className="card-link btt">
             Info
           </Link>
           <a
             href="#"
-            className="card-link"
+            className="card-link btt"
             onClick={() => {
               onSelect(
                 hero.name,
