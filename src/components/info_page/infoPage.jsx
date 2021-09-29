@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import InfoHero from "./infoHero";
 import { heroInfo, heroInfo_2, heroComics } from "../../services/services";
-import "./infoPage.css";
+import HeaderSingleChar from "../header/headerSingleChar";
+import "../css/infoPage.css";
 
 const InfoPage = (props) => {
   const [heroData, setHeroData] = useState([]);
@@ -21,6 +22,7 @@ const InfoPage = (props) => {
   }, []);
   return (
     <Fragment>
+      <HeaderSingleChar />
       <InfoHero data={heroData} data_2={heroData_2} comics={listOfComics} />
     </Fragment>
   );

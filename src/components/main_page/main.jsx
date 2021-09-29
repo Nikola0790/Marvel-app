@@ -3,6 +3,8 @@ import Cards from "./card";
 import { heroCharacters, searchCharacter } from "../../services/services";
 import MyTeam from "./myTeam";
 import SearchBar from "./searchBar";
+import Header from "../header/header";
+import Loader from "../loader/loader";
 
 const MainPage = () => {
   const [heroes, setHeroes] = useState([]);
@@ -40,40 +42,50 @@ const MainPage = () => {
     }
   }, [query]);
 
-  return (
-    <Fragment>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            <div className="row">
-              <div className="col-md-4">
-                <SearchBar search={(q) => setQuery(q)} />
+  if (heroes.length > 0) {
+    return (
+      <Fragment>
+        <Header />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8">
+              <div className="row">
+                <div className="col-md-4">
+                  <SearchBar search={(q) => setQuery(q)} />
+                </div>
+              </div>
+              <div className="row">
+                <Cards items={heroes} onSelect={addSelectedHero} />
               </div>
             </div>
-            <div className="row">
-              <Cards items={heroes} onSelect={addSelectedHero} />
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="row">
-              <div className="col-12">
-                <h3>MY TEAM</h3>
+            <div className="col-md-4">
+              <div className="row">
+                <div className="col-12 text-center">
+                  <h3>MY TEAM</h3>
+                </div>
               </div>
+              {selectedHeroes.map((hero, index) => {
+                return (
+                  <MyTeam
+                    key={index}
+                    img={hero.img}
+                    name={hero.name}
+                    deleted={deleteSelectedHero}
+                  />
+                );
+              })}
             </div>
-            {selectedHeroes.map((hero, index) => {
-              return (
-                <MyTeam
-                  key={index}
-                  img={hero.img}
-                  name={hero.name}
-                  deleted={deleteSelectedHero}
-                />
-              );
-            })}
           </div>
         </div>
-      </div>
-    </Fragment>
-  );
+      </Fragment>
+    );
+  } else {
+    return (
+      <Fragment>
+        <Header />
+        <Loader />
+      </Fragment>
+    );
+  }
 };
 export default MainPage;

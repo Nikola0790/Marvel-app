@@ -17,9 +17,6 @@ const MyTeam = ({ img, name, deleted }) => {
               onClick={(e) => onDelete(e.target.src)}
               className="image_team"
             />
-            <div className="middle">
-              <i className="material-icons delete_icon">delete_forever</i>
-            </div>
           </div>
           <div className="col-md-8 nameList">{name}</div>
         </div>

@@ -7,13 +7,11 @@ import {
 } from "react-router-dom";
 import MainPage from "./components/main_page/main";
 import InfoPage from "./components/info_page/infoPage";
-import Header from "./components/header/header";
 
 function App() {
   return (
     <Fragment>
       <Router>
-        <Header />
         <Switch>
           <Route exact path="/main" component={MainPage} />
           <Route exact path="/infoPage/:id" component={InfoPage} />

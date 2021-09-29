@@ -1,6 +1,5 @@
-import "./modal.css";
+import "../css/modal.css";
 export const Modal = ({ data, numIndex }) => {
-  console.log(data);
   let price = data.prices;
 
   if (data.images.length === 0) {
@@ -54,9 +53,9 @@ export const Modal = ({ data, numIndex }) => {
                               <p className="question">Price</p>
                             </div>
                             <div className="col-12">
-                              {price.map((price) => {
+                              {price.map((price, index) => {
                                 return (
-                                  <p className="answer">
+                                  <p className="answer" key={index}>
                                     {price.type}: {price.price}
                                   </p>
                                 );
@@ -68,12 +67,17 @@ export const Modal = ({ data, numIndex }) => {
                               <p className="question">Sale date</p>
                             </div>
                             <div className="col-12">
-                              {data.dates.map((date) => {
+                              {data.dates.map((date, index) => {
                                 if (date.type === "onsaleDate") {
-                                  /* let day = new Date(date.date).getDate();
-                                let month = new Date(date.date).getMonth();
-                                let year = new Date(date.date).getYear(); */
-                                  return <p className="answer">{date.date}</p>;
+                                  let day = new Date(date.date).getDate();
+                                  let month =
+                                    new Date(date.date).getMonth() + 1;
+                                  let year = new Date(date.date).getFullYear();
+                                  return (
+                                    <p className="answer" key={index}>
+                                      {day}.{month}.{year}
+                                    </p>
+                                  );
                                 }
                               })}
                             </div>
@@ -83,8 +87,12 @@ export const Modal = ({ data, numIndex }) => {
                               <p className="question">List of creators</p>
                             </div>
                             <div className="col-12">
-                              {data.creators.items.map((name) => {
-                                return <p className="answer">{name.name}</p>;
+                              {data.creators.items.map((name, index) => {
+                                return (
+                                  <p className="answer" key={index}>
+                                    {name.name}
+                                  </p>
+                                );
                               })}
                             </div>
                           </div>
@@ -93,8 +101,12 @@ export const Modal = ({ data, numIndex }) => {
                               <p className="question">List of characters</p>
                             </div>
                             <div className="col-12">
-                              {data.characters.items.map((name) => {
-                                return <p className="answer">{name.name}</p>;
+                              {data.characters.items.map((name, index) => {
+                                return (
+                                  <p className="answer" key={index}>
+                                    {name.name}
+                                  </p>
+                                );
                               })}
                             </div>
                           </div>
@@ -174,9 +186,9 @@ export const Modal = ({ data, numIndex }) => {
                             <p className="question">Price</p>
                           </div>
                           <div className="col-12">
-                            {price.map((price) => {
+                            {price.map((price, index) => {
                               return (
-                                <p className="answer">
+                                <p className="answer" key={index}>
                                   {price.type}: {price.price}
                                 </p>
                               );
@@ -188,12 +200,16 @@ export const Modal = ({ data, numIndex }) => {
                             <p className="question">Sale date</p>
                           </div>
                           <div className="col-12">
-                            {data.dates.map((date) => {
+                            {data.dates.map((date, index) => {
                               if (date.type === "onsaleDate") {
-                                /* let day = new Date(date.date).getDate();
-                                let month = new Date(date.date).getMonth();
-                                let year = new Date(date.date).getYear(); */
-                                return <p className="answer">{date.date}</p>;
+                                let day = new Date(date.date).getDate();
+                                let month = new Date(date.date).getMonth() + 1;
+                                let year = new Date(date.date).getFullYear();
+                                return (
+                                  <p className="answer" key={index}>
+                                    {day}.{month}.{year}
+                                  </p>
+                                );
                               }
                             })}
                           </div>
@@ -203,8 +219,12 @@ export const Modal = ({ data, numIndex }) => {
                             <p className="question">List of creators</p>
                           </div>
                           <div className="col-12">
-                            {data.creators.items.map((name) => {
-                              return <p className="answer">{name.name}</p>;
+                            {data.creators.items.map((name, index) => {
+                              return (
+                                <p className="answer" key={index}>
+                                  {name.name}
+                                </p>
+                              );
                             })}
                           </div>
                         </div>
@@ -213,8 +233,12 @@ export const Modal = ({ data, numIndex }) => {
                             <p className="question">List of characters</p>
                           </div>
                           <div className="col-12">
-                            {data.characters.items.map((name) => {
-                              return <p className="answer">{name.name}</p>;
+                            {data.characters.items.map((name, index) => {
+                              return (
+                                <p className="answer" key={index}>
+                                  {name.name}
+                                </p>
+                              );
                             })}
                           </div>
                         </div>

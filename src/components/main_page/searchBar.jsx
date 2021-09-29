@@ -8,7 +8,7 @@ const SearchBar = ({ search }) => {
     search(q);
   };
   return (
-    <div className="searchBox">
+    <div className="searchBox mb-3">
       <input
         className=""
         type="text"
