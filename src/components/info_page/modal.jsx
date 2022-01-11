@@ -56,7 +56,7 @@ export const Modal = ({ data, numIndex }) => {
                               {price.map((price, index) => {
                                 return (
                                   <p className="answer" key={index}>
-                                    {price.type}: {price.price}
+                                    {price.type}: {price.price} $
                                   </p>
                                 );
                               })}
@@ -189,7 +189,7 @@ export const Modal = ({ data, numIndex }) => {
                             {price.map((price, index) => {
                               return (
                                 <p className="answer" key={index}>
-                                  {price.type}: {price.price}
+                                  {price.type}: {price.price} $
                                 </p>
                               );
                             })}
