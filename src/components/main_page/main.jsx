@@ -20,12 +20,18 @@ const MainPage = () => {
       alert("You have already added a selected hero");
     } else {
       setSelectedHeroes([...selectedHeroes, newSelectedHero]);
+      localStorage.setItem(
+        "myTeam",
+        JSON.stringify([...selectedHeroes, newSelectedHero])
+      );
     }
   };
 
   const deleteSelectedHero = (url) => {
+    localStorage.removeItem("myTeam");
     let arr = selectedHeroes.filter((e) => e.img !== url);
     setSelectedHeroes(arr);
+    localStorage.setItem("myTeam", JSON.stringify(arr));
   };
 
   useEffect(() => {
@@ -33,6 +39,9 @@ const MainPage = () => {
       heroCharacters().then((res) => {
         setHeroes(res.data.results);
         setLoading(false);
+        if (!!localStorage.getItem("myTeam")) {
+          setSelectedHeroes(JSON.parse(localStorage.getItem("myTeam")));
+        }
       });
     } else {
       searchCharacter(query).then((result) => {
@@ -83,6 +92,7 @@ const MainPage = () => {
     return (
       <Fragment>
         <Header />
+        <SearchBar search={(q) => setQuery(q)} />
         <Loader />
       </Fragment>
     );
